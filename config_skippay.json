@@ -1,0 +1,6 @@
+{
+    "SECRET_KEY": "django-insecure-#6ga*^eoi6k-*br=+^g&!i0x6tccy8hr3aywnn=fs50c+=f7+q",
+    "POSTGRES_USER": "postgres",
+    "POSTGRES_PASSWORD": "PetrSkipPay2024!"
+
+}
