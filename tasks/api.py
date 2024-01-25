@@ -23,8 +23,12 @@ def create_task(request, task: TaskSchema):
 
 @api.put("/tasks/{task_id}")
 def update_task(request, task_id: int, task: TaskSchema):
-    task_obj = Task.objects.filter(id=task_id).update(**task.dict())
+    task_obj = Task.objects.get(id=task_id)
+    for attr, value in task.dict().items():
+        setattr(task_obj, attr, value)
+    task_obj.save()
     return {"task": TaskSchema.from_orm(task_obj)}
+
 
 @api.delete("/tasks/{task_id}")
 def delete_task(request, task_id: int):

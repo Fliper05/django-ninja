@@ -3,12 +3,12 @@ services:
   db:
     image: postgres
     environment:
-      POSTGRES_DB: SkipPay
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: PetrSkipPay2024!
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
   django:
     build: .
-    command: python3 manage.py runserver 0.0.0.0:8000
+    command: bash -c "python3 manage.py makemigrations && python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/usr/src/app
     ports:
